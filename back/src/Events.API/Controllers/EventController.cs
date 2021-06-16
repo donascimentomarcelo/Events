@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Events.API.Data;
 using Events.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,25 +11,24 @@ namespace Events.API.Controllers
     [Route("api/[controller]")]
     public class EventController : ControllerBase
     {
+        private readonly DataContext _context;
 
-        public EventController()
+        public EventController(DataContext context)
         {
-            
+            this._context = context;
+
         }
 
         [HttpGet]
         public IEnumerable<Event> Get()
         {
-            yield return new Event()
-            {
-                EventId = 1,
-                Local = "Angular 11 and .NET 5",
-                DateEvent = DateTime.Now.AddDays(2).ToString(),
-                Theme = "1º class",
-                QuantityPeople = 250,
-                Allotment = "Test",
-                ImageURL = "./path/"
-            };
+            return _context.Events;
+        }
+
+        [HttpGet("{id}")]
+        public Event GetById(int id) 
+        {
+            return _context.Events.FirstOrDefault(ev => ev.EventId == id);
         }
     }
 }
