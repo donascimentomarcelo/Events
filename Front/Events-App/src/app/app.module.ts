@@ -4,10 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { EventsComponent } from './pages/events/events.component';
+import { SpeakersComponent } from './pages/speakers/speakers.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EventsComponent,
+    SpeakersComponent
   ],
   imports: [
     BrowserModule,
