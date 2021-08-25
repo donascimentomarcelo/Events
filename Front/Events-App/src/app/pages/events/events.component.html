@@ -22,11 +22,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let event of events">
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
+            <td>{{ event.theme }}</td>
+            <td>{{ event.local }}</td>
             <td></td>
             <td></td>
             <td></td>
